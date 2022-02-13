@@ -18,3 +18,23 @@ dependencies {
   implementation 'com.github.osocket:android-client:1.0.2'
 }
 ```
+
+# configuration
+
+in kotlin
+```KOTLIN
+var osocket = OpenSocket(this);
+
+osocket.setProjectConfig(project_id, client_id)
+osocket.setDeveloperConfig(developer_id)
+osocket.connect()
+```
+
+in java
+```JAVA
+OpenSocket osocket = new OpenSocket(this);
+
+osocket.setProjectConfig(project_id, client_id);
+osocket.setDeveloperConfig(developer_id);
+osocket.connect();
+```
