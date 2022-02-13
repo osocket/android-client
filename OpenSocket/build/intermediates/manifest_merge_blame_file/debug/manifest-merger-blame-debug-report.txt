@@ -4,15 +4,15 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="21"
-6-->/home/ben/Work/Android/OpenSocketClient/OpenSocket/src/main/AndroidManifest.xml
+6-->/home/ben/Work/Android/client-new/OpenSocket/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="32" />
-7-->/home/ben/Work/Android/OpenSocketClient/OpenSocket/src/main/AndroidManifest.xml
+7-->/home/ben/Work/Android/client-new/OpenSocket/src/main/AndroidManifest.xml
 8
 9    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-9-->/home/ben/Work/Android/OpenSocketClient/OpenSocket/src/main/AndroidManifest.xml:4:5-97
-9-->/home/ben/Work/Android/OpenSocketClient/OpenSocket/src/main/AndroidManifest.xml:4:22-78
+9-->/home/ben/Work/Android/client-new/OpenSocket/src/main/AndroidManifest.xml:4:5-97
+9-->/home/ben/Work/Android/client-new/OpenSocket/src/main/AndroidManifest.xml:4:22-78
 10    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-10-->/home/ben/Work/Android/OpenSocketClient/OpenSocket/src/main/AndroidManifest.xml:5:5-77
-10-->/home/ben/Work/Android/OpenSocketClient/OpenSocket/src/main/AndroidManifest.xml:5:22-74
+10-->/home/ben/Work/Android/client-new/OpenSocket/src/main/AndroidManifest.xml:5:5-77
+10-->/home/ben/Work/Android/client-new/OpenSocket/src/main/AndroidManifest.xml:5:22-74
 11
 12</manifest>

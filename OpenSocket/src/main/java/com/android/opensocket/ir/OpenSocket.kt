@@ -230,7 +230,6 @@ class OpenSocket {
             icon = R.drawable.ic_baseline_notifications_active_24
         }
 
-        icon = R.drawable.ic_baseline_notifications_active_24
 
         var id = settings.getInt("notify_id", 0);
         id++;
