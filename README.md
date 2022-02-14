@@ -15,7 +15,7 @@ allprojects {
 ## Step 2. Add the dependency
 ```
 dependencies {
-  implementation 'com.github.osocket:android-client:1.0.2'
+  implementation 'com.github.osocket:android-client:1.0.4'
 }
 ```
 
