@@ -185,9 +185,9 @@ class OpenSocket {
             }
         }
 
-        var larg_text_support = false;
-        if (ob.has("set_larg_text") && ob.get("set_larg_text").asBoolean) {
-            larg_text_support = true
+        var big_text_support = false;
+        if (ob.has("big_text") && ob.get("big_text").asBoolean) {
+            big_text_support = true
         }
 
         var sound = true
@@ -272,7 +272,7 @@ class OpenSocket {
             builder.setColor(color)
         }
 
-        if (larg_text_support) {
+        if (big_text_support) {
             builder.setStyle(
                 NotificationCompat.BigTextStyle()
                     .bigText(text)
