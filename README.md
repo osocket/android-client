@@ -21,7 +21,7 @@ dependencies {
 
 # configuration
 
-in kotlin
+kotlin
 ```KOTLIN
 var osocket = OpenSocket(this);
 
@@ -30,7 +30,7 @@ osocket.setDeveloperConfig(developer_id)
 osocket.connect()
 ```
 
-in java
+java
 ```JAVA
 OpenSocket osocket = new OpenSocket(this);
 
