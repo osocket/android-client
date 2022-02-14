@@ -22,7 +22,7 @@ import kotlin.concurrent.schedule
 class OpenSocket {
 
 
-    // change at [2022-02-11]
+    // change at [2022-02-14]
     private val version = 1;
 
     private val TAG = "opensocket";
