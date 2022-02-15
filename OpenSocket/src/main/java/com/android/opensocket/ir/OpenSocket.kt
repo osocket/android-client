@@ -44,7 +44,7 @@ class OpenSocket {
     private var editSetting: SharedPreferences.Editor;
     private lateinit var socket: Socket;
 
-
+    var PRIORITY_DEFAULT = NotificationCompat.PRIORITY_DEFAULT;
 
 
     fun setProjectConfig(id: String, token: String) {
@@ -54,6 +54,10 @@ class OpenSocket {
 
     fun setDeveloperConfig(id: String) {
         developer_id = id
+    }
+
+    fun setPriority(value: Int) {
+        PRIORITY_DEFAULT = value;
     }
 
     var onReceiveMessage: (json_object: JsonObject) -> Unit = {}
@@ -73,9 +77,9 @@ class OpenSocket {
         }
     }
 
-    fun connected() :Boolean{
-        if(socket!=null)
-        return socket.connected();
+    fun connected(): Boolean {
+        if (socket != null)
+            return socket.connected();
         else return false
     }
 
@@ -145,7 +149,7 @@ class OpenSocket {
                     this.onReceiveMessage(ob);
                 }
 
-                if (ob.has("callback")&&ob.get("callback").asBoolean){
+                if (ob.has("callback") && ob.get("callback").asBoolean) {
                     socket.emit("receive-answer", ob.get("message_id").asString, userToken());
                 }
             })
@@ -274,8 +278,7 @@ class OpenSocket {
             .setSmallIcon(icon)
             .setContentTitle(title)
             .setContentText(text)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
+            .setPriority(PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
