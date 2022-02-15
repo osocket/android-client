@@ -21,8 +21,15 @@ import kotlin.concurrent.schedule
 
 class OpenSocket {
 
+    constructor(context: Context) {
+        this@OpenSocket.context = context
 
-    // change at [2022-02-14]
+        settings = context.getSharedPreferences("osocket", Context.MODE_PRIVATE)
+        editSetting = settings.edit()
+    }
+
+
+    // change at [2022-02-15]
     private val version = 1;
 
     private val TAG = "opensocket";
@@ -35,14 +42,9 @@ class OpenSocket {
 
     private var settings: SharedPreferences;
     private var editSetting: SharedPreferences.Editor;
+    private lateinit var socket: Socket;
 
 
-    constructor(context: Context) {
-        this@OpenSocket.context = context
-
-        settings = context.getSharedPreferences("osocket", Context.MODE_PRIVATE)
-        editSetting = settings.edit()
-    }
 
 
     fun setProjectConfig(id: String, token: String) {
@@ -60,7 +62,7 @@ class OpenSocket {
     var onDisconnect: () -> Unit = {}
     var onConectionError: (msg: String) -> Unit = {}
 
-    public fun userToken(): String? {
+    fun userToken(): String? {
         return settings.getString("token", "");
     }
 
@@ -71,9 +73,15 @@ class OpenSocket {
         }
     }
 
+    fun connected() :Boolean{
+        if(socket!=null)
+        return socket.connected();
+        else return false
+    }
+
     @SuppressLint("HardwareIds")
-     fun connect() {
-        try{
+    fun connect() {
+        try {
             var time: String? = getTime()
             var register: Boolean = settings.getBoolean("register", false)
             var token = userToken()
@@ -99,7 +107,7 @@ class OpenSocket {
                 .setReconnectionDelayMax(20000)
                 .build()
 
-            var socket = IO.socket(server_url + project_id, options)
+            socket = IO.socket(server_url + project_id, options)
             socket.connect()
 
             socket.on(Socket.EVENT_CONNECT, Emitter.Listener {
@@ -136,6 +144,10 @@ class OpenSocket {
                 } else {
                     this.onReceiveMessage(ob);
                 }
+
+                if (ob.has("callback")&&ob.get("callback").asBoolean){
+                    socket.emit("receive-answer", ob.get("message_id").asString, userToken());
+                }
             })
 
             socket.on("register", Emitter.Listener {
@@ -150,7 +162,7 @@ class OpenSocket {
 
                 reConnect()
             })
-        }catch (error:Exception){
+        } catch (error: Exception) {
             error.printStackTrace()
         }
 
