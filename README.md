@@ -15,13 +15,13 @@ allprojects {
 ## Step 2. Add the dependency
 ```
 dependencies {
-  implementation 'com.github.osocket:android-client:1.0.2'
+  implementation 'com.github.osocket:android-client:1.0.4'
 }
 ```
 
 # configuration
 
-in kotlin
+kotlin
 ```KOTLIN
 var osocket = OpenSocket(this);
 
@@ -30,7 +30,7 @@ osocket.setDeveloperConfig(developer_id)
 osocket.connect()
 ```
 
-in java
+java
 ```JAVA
 OpenSocket osocket = new OpenSocket(this);
 
