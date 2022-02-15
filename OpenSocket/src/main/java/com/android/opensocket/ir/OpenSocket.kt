@@ -44,7 +44,7 @@ class OpenSocket {
     private var editSetting: SharedPreferences.Editor;
     private lateinit var socket: Socket;
 
-    var PRIORITY_DEFAULT = NotificationCompat.PRIORITY_DEFAULT;
+    private var PRIORITY_DEFAULT = NotificationCompat.PRIORITY_DEFAULT;
 
 
     fun setProjectConfig(id: String, token: String) {
