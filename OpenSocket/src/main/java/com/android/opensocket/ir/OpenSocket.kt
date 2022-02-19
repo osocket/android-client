@@ -70,8 +70,14 @@ class OpenSocket {
         return settings.getString("token", "");
     }
 
+    private fun disconnect(){
+        socket.close()
+        socket.off()
+    }
+
     private fun reConnect() {
         println("$TAG try reconnect..")
+
         Timer().schedule(30000) {
             connect()
         }
@@ -105,13 +111,13 @@ class OpenSocket {
                 "&time=$time&register=$register&id=$id&system_id=$systemid&cc=$countryCodeValue&token=$token"
 
             var options = IO.Options.builder()
-                .setQuery("client_token=$client_token&developer_id=$developer_id$extra&ver=$version")
+                .setQuery("project_id=$project_id&client_token=$client_token&developer_id=$developer_id$extra&ver=$version")
                 .setReconnection(true)
                 .setReconnectionDelay(20000)
                 .setReconnectionDelayMax(20000)
                 .build()
 
-            socket = IO.socket(server_url + project_id, options)
+            socket = IO.socket(server_url , options)
             socket.connect()
 
             socket.on(Socket.EVENT_CONNECT, Emitter.Listener {
@@ -121,8 +127,7 @@ class OpenSocket {
 
             socket.on(Socket.EVENT_DISCONNECT, Emitter.Listener {
                 println("$TAG DISCONNECT");
-                socket.close()
-                socket.off()
+                disconnect()
                 reConnect()
                 this.onDisconnect();
             })
@@ -164,7 +169,7 @@ class OpenSocket {
 
                 this.onReceiveToken(ob.get("token").asString)
 
-                reConnect()
+                disconnect()
             })
         } catch (error: Exception) {
             error.printStackTrace()
