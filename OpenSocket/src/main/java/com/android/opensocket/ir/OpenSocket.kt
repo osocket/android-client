@@ -252,7 +252,7 @@ class OpenSocket {
         }
 
 
-        var id = settings.getInt("notify_id", 0);
+        var id = settings.getInt("notify_id", 1);
         id++;
 
         if (id > 10000000)
