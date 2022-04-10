@@ -18,8 +18,8 @@ class MyService : Service() {
 
         val osocket = OpenSocket(this);
 
-        osocket.setProjectConfig("id","token")
-        osocket.setDeveloperConfig("id")
+        osocket.setProjectConfig("project_id","client_token")
+        osocket.setDeveloperConfig("develper_id")
 
         osocket.connect()
         osocket.setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -30,6 +30,10 @@ class MyService : Service() {
 
         osocket.onConnect = {
             Log.i("opensocket","service : onConnect")
+        }
+
+        osocket.onReceiveMessage = {
+            Log.i("opensocket", "message:$it")
         }
     }
 }

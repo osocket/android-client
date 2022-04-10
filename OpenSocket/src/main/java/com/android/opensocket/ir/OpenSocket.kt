@@ -269,11 +269,8 @@ class OpenSocket {
         intt?.putExtra("message_id", ob.get("message_id").asString)
         intt?.putExtra("time", ob.get("time").asLong)
         if (ob.has("data")) {
-            val array = ob.get("data").asJsonArray
-            for (item in array) {
-                val json = item.asJsonObject;
-                intt?.putExtra(json.get("key").asString, json.get("value").asString);
-            }
+            val dataString = ob.get("data").toString()
+            intt?.putExtra("data_string",dataString);
         }
 
 
