@@ -28,6 +28,9 @@ var osocket = OpenSocket(this);
 osocket.setProjectConfig(project_id, client_id)
 osocket.setDeveloperConfig(developer_id)
 osocket.connect()
+
+// You can change the priority of the notification
+// osocket.setPriority(NotificationCompat.PRIORITY_HIGH)
 ```
 
 java
