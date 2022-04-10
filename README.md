@@ -15,7 +15,7 @@ allprojects {
 ## Step 2. Add the dependency
 ```
 dependencies {
-  implementation 'com.github.osocket:android-client:1.0.10'
+  implementation 'com.github.osocket:android-client:1.0.11'
 }
 ```
 
@@ -37,4 +37,22 @@ OpenSocket osocket = new OpenSocket(this);
 osocket.setProjectConfig(project_id, client_id);
 osocket.setDeveloperConfig(developer_id);
 osocket.connect();
+```
+
+### Methods:
+onConnect, onReceiveToken, onReceiveMessage, onDisconnect, onConectionError
+
+kotlin sample
+```KOTLIN
+ osocket.onReceiveToken = {
+      Log.i("opensocket","service : onReceiveToken : $it")
+ }
+
+osocket.onConnect = {
+     Log.i("opensocket","service : onConnect")
+}
+
+osocket.onReceiveMessage = {
+      Log.i("opensocket", "message:$it")
+}
 ```
